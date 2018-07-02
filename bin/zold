@@ -148,7 +148,7 @@ Available options:"
     Zold::Remote.new(remotes: remotes, log: log).run(args)
   when 'invoice'
     require_relative '../lib/zold/commands/invoice'
-    Zold::Invoice.new(wallets: wallets, log: log).run(args)
+    Zold::Invoice.new(wallets: wallets, remotes: remotes, copies: copies, log: log).run(args)
   when 'pay'
     require_relative '../lib/zold/commands/pay'
     Zold::Pay.new(wallets: wallets, remotes: remotes, log: log).run(args)

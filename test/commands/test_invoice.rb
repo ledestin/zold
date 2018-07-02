@@ -36,9 +36,11 @@ class TestInvoice < Minitest::Test
     Dir.mktmpdir 'test' do |dir|
       id = Zold::Id.new
       wallets = Zold::Wallets.new(dir)
+      remotes = home.remotes
+      copies = home.copies(wallet)
       source = wallets.find(id)
       source.init(id, Zold::Key.new(file: 'fixtures/id_rsa.pub'))
-      invoice = Zold::Invoice.new(wallets: wallets, log: test_log).run(
+      invoice = Zold::Invoice.new(wallets: wallets, remotes: remotes, copies: copies, log: test_log).run(
         ['invoice', id.to_s, '--length=16']
       )
       assert_equal(33, invoice.length)

@@ -165,7 +165,8 @@ module Zold
           Pull.new(wallets: @wallets, remotes: @remotes, copies: @copies, log: @log).run(['pull', invoice])
         end
         require_relative 'invoice'
-        invoice = Invoice.new(wallets: @wallets, log: @log).run(['invoice', invoice])
+        invoice = Invoice.new(wallets: @wallets, remotes: @remotes,
+                              copies: @copies, log: @log).run(['invoice', invoice])
       end
       SafeEntrance.new(
         AsyncEntrance.new(

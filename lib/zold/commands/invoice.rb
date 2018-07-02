@@ -30,8 +30,10 @@ require_relative '../prefixes'
 module Zold
   # Generate invoice
   class Invoice
-    def initialize(wallets:, log: Log::Quiet.new)
+    def initialize(wallets:, remotes:, copies:, log: Log::Quiet.new)
       @wallets = wallets
+      @remotes = remotes
+      @copies = copies
       @log = log
     end
 
